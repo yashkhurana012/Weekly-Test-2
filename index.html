@@ -1,0 +1,151 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Calculator</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+
+        }
+        body{
+            background-color: #f7f7f7;
+        }
+        section{
+            background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    width: 45%;
+    margin: 0 auto;
+    border-radius: 5px;
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+
+        }
+        h1{
+            font-size: 32px;
+            margin-bottom: 1rem;
+            text-align: center;
+            padding-top: 10px;
+
+        }
+        h2{
+            font-size: 16px;
+            margin-bottom: 0.7rem;
+            text-align: center;
+            
+        }
+        input{
+            margin-bottom: 0.7rem;
+          
+            width: 18.75rem;
+            padding: 9px;
+            border-radius: 6px;
+            outline: none;
+            border: 1px solid #ccc;
+
+        }
+        button{
+            background-color: #007bff;
+            padding: 10px 20px;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: center;
+
+        }
+        p{
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-align: center;
+            padding-bottom: 10px;
+            
+        }
+        @media screen and (max-width:620px){
+            section{
+                width: 90% !important;
+                padding: 0px !important;
+                padding: 1.5rem 0px !important;
+                background-color: black;
+                color: white;
+            }
+            input{
+                width: 15rem !important;
+            }
+           
+        }
+
+    </style>
+</head>
+<body>
+   
+
+
+   <section>
+    <h1>Age Calculator</h1>
+    <h2>Enter you date of birth</h2>
+    <div>
+    <input type="date" name="" id="inp">
+</div>
+    <button>Calculate Age</button>
+    <p>Your age is <span id="age">--</span> years old</p>
+
+   </section>
+
+
+
+   <script>
+    let age = document.querySelector("#age");
+let inp = document.querySelector("#inp");
+let button = document.querySelector("button");
+
+button.addEventListener("click", function () {
+    if (inp.value === "") {
+        alert("Please enter your birthday");
+    } else {
+        let ans = calculateAge(inp.value);
+        age.innerHTML = ans ;
+    }
+});
+
+function calculateAge(birthday) {
+    const currentDate = new Date();
+    const birthDate = new Date(birthday);
+
+    let age = currentDate.getFullYear() - birthDate.getFullYear();
+
+    
+    if (currentDate.getMonth() < birthDate.getMonth() || (currentDate.getMonth() === birthDate.getMonth() &&
+            currentDate.getDate() < birthDate.getDate())
+    ) {
+        age--;
+    }
+
+    return age;
+}
+
+   </script>
+  
+  
+
+
+
+</body>
+</html>
+
+
+
+
+
+    
+       
